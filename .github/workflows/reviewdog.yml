@@ -1,0 +1,10 @@
+name: Reviewdog
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+
+jobs:
+  actionlint:
+    uses: ./.github/workflows/reviewdog_actionlint.yml

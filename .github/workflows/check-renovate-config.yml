@@ -1,0 +1,25 @@
+name: Checking renovate config
+
+on:
+  workflow_call:
+    inputs:
+      nodejs_version:
+        required: false
+        type: string
+        default: '16.x'
+
+jobs:
+  check:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.nodejs_version }}
+
+      - name: validate renovate config
+        run: npx --package renovate -c 'renovate-config-validator'
