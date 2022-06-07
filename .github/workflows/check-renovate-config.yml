@@ -4,6 +4,7 @@ on:
   workflow_call:
     inputs:
       nodejs_version:
+        description: Target version of Node.js
         required: false
         type: string
         default: '16.x'
